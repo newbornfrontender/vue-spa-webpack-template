@@ -1,10 +1,10 @@
 <div align="center">
   <div>
     <a href="https://vuejs.org/index.html">
-      <img height="150" alt="Vue logo" src="https://raw.githubusercontent.com/newbornfrontender/vue-webpack-template/master/build/logos/vue-logo.png">
+      <img width="145" height="125" alt="Vue logo" src="https://raw.githubusercontent.com/newbornfrontender/vue-webpack-template/master/build/logos/vue-logo.png">
     </a>
     <a href="https://webpack.js.org/">
-      <img height="150" alt="Webpack logo" src="https://raw.githubusercontent.com/newbornfrontender/vue-webpack-template/master/build/logos/webpack-logo.png">
+      <img width="110" height="125" alt="Webpack logo" src="https://raw.githubusercontent.com/newbornfrontender/vue-webpack-template/master/build/logos/webpack-logo.png">
     </a>
   </div>
   <h1>Titile</h1>
