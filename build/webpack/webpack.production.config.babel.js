@@ -20,8 +20,8 @@ const MCEP = new MiniCssExtractPlugin({
 // =============================================================================
 
 const config = new WebpackConfig().extend(
-  './build/webpack.base.config.js', {
-  './build/webpack.development.config.babel.js': config => {
+  './build/webpack/webpack.base.config.js', {
+  './build/webpack/webpack.development.config.babel.js': config => {
     delete config.mode;
 
     delete config.plugins;

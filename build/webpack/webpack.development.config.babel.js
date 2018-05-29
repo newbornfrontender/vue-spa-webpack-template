@@ -42,7 +42,7 @@ const MCEP = new MiniCssExtractPlugin({
 // =============================================================================
 
 const config = new WebpackConfig().extend(
-  './build/webpack.base.config',
+  './build/webpack/webpack.base.config',
 ).merge({
   mode: 'development',
 
