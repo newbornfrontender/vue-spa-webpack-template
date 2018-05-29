@@ -9,9 +9,9 @@
     "yarn": "1.6.0"
   },
   "scripts": {
-    "serve": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./build/webpack.server.config.babel.js",
-    "start": "cross-env NODE_ENV=development webpack --config ./build/webpack.development.config.babel.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.production.config.babel.js",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./build/webpack/webpack.server.config.babel.js",
+    "start": "cross-env NODE_ENV=development webpack --config ./build/webpack/webpack.development.config.babel.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack/webpack.production.config.babel.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "tests": "yarn test:jest",
