@@ -12,7 +12,7 @@ import path from 'path';
 
 export default {
   resolve: function (dir) {
-    return path.join(__dirname, '..', dir);
+    return path.join(__dirname, '../..', dir);
   },
 
   assetsPath: function (_path) {
