@@ -11,6 +11,7 @@
 # Files
 # ------------------------------------------------------------------------------
 
+webpack.config.babel.js
 posthtml.config.js
 postcss.config.js
 
