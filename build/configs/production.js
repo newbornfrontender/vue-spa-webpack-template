@@ -1,27 +1,35 @@
 'use strict';
 
 // =============================================================================
-// = PLUGINS                                                                   =
+// = DEPENDENCIES                                                              =
 // =============================================================================
+
+// Plugins
+// -----------------------------------------------------------------------------
 
 import WebpackMerge from 'webpack-merge';
 
 // =============================================================================
-// = PLUGINS                                                                   =
+// = WEBPACK PARTS                                                             =
 // =============================================================================
+
+// Plugins
+// -----------------------------------------------------------------------------
 
 import dynamicCdnWebpackPlugin from './parts/plugins/dynamic-cdn-webpack-plugin';
 import miniCssExtractPlugin from './parts/plugins/mini-css-extract-plugin';
 
-const plugins = WebpackMerge([
-  dynamicCdnWebpackPlugin,
-  miniCssExtractPlugin({
-    filename: 'main.css', // ?
-  }),
-]);
+const plugins = (
+  WebpackMerge([
+    dynamicCdnWebpackPlugin,
+    miniCssExtractPlugin({
+      filename: 'main.css', // ?
+    }),
+  ])
+);
 
 // =============================================================================
-// = PRODUCTION                                                                =
+// = WEBPACK CONFIG                                                            =
 // =============================================================================
 
 export default (

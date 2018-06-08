@@ -1,13 +1,16 @@
 'use strict';
 
 // =============================================================================
-// = MODULES                                                                   =
+// = DEPENDENCIES                                                              =
 // =============================================================================
+
+// Modules
+// -----------------------------------------------------------------------------
 
 import path from 'path';
 
 // =============================================================================
-// = UTILS                                                                     =
+// = MODULE CONFIG                                                             =
 // =============================================================================
 
 export default {
@@ -16,7 +19,7 @@ export default {
   },
 
   assetsPath: function (_path) {
-    const assetsSubDirectory = 'static';
+    const assetsSubDirectory = 'static'; // ?
 
     return path.posix.join(assetsSubDirectory, _path);
   },

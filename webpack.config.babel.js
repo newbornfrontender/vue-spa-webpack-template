@@ -1,13 +1,21 @@
 'use strict';
 
 // =============================================================================
-// = PLUGINS                                                                   =
+// = DEPENDENCIES                                                              =
 // =============================================================================
+
+// Plugins
+// -----------------------------------------------------------------------------
 
 import WebpackMerge from 'webpack-merge';
 
+// Environments
+// -----------------------------------------------------------------------------
+
+const env = process.env.NODE_ENV;
+
 // =============================================================================
-// = BUILDS                                                                    =
+// = WEBPACK BUILDS                                                            =
 // =============================================================================
 
 import commonBuild from './build/configs/common';
@@ -15,26 +23,8 @@ import developmentBuild from './build/configs/development';
 import productionBuild from './build/configs/production';
 
 // =============================================================================
-// = ENVIRONMENTS                                                              =
+// = WEBPACK CONFIG                                                            =
 // =============================================================================
-
-const env = process.env.NODE_ENV;
-
-// =============================================================================
-// = CONFIG                                                                    =
-// =============================================================================
-
-// export default () => {
-//   if (process.env.NODE_ENV === 'development') {
-//     return WebpackMerge(
-//       common, development,
-//     );
-//   } else if (process.env.NODE_ENV === 'production') {
-//     return WebpackMerge(
-//       common, production,
-//     );
-//   };
-// };
 
 export default () => {
   let environmentBuild = () => {
@@ -47,7 +37,9 @@ export default () => {
     };
   };
 
-  return WebpackMerge(
-    commonBuild, environmentBuild(),
+  return (
+    WebpackMerge(
+      commonBuild, environmentBuild(),
+    )
   );
 };
