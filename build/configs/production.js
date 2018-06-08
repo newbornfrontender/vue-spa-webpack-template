@@ -10,19 +10,15 @@ import WebpackMerge from 'webpack-merge';
 // = PLUGINS                                                                   =
 // =============================================================================
 
+import dynamicCdnWebpackPlugin from './parts/plugins/dynamic-cdn-webpack-plugin';
 import miniCssExtractPlugin from './parts/plugins/mini-css-extract-plugin';
 
 const plugins = WebpackMerge([
+  dynamicCdnWebpackPlugin,
   miniCssExtractPlugin({
     filename: 'main.css', // ?
   }),
 ]);
-
-// =============================================================================
-// = OPTIMIZATION                                                              =
-// =============================================================================
-
-import optimization from './parts/optimization';
 
 // =============================================================================
 // = PRODUCTION                                                                =
@@ -31,11 +27,5 @@ import optimization from './parts/optimization';
 export default (
   WebpackMerge([
     plugins,
-
-    // optimization({
-    //   name: 'vendor',
-    // }),
-
-    optimization,
   ])
 );
