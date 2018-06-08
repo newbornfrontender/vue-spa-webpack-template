@@ -111,7 +111,7 @@ export default (
       entry: './src/index.js', // ?
     }),
     output({ // ?
-      // filename: 'build.js',
+      filename: 'build.js',
       path: utils.resolve('dist'),
     }),
     mode,
