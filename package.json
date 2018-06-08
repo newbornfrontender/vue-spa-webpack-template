@@ -1,6 +1,6 @@
 {
   "name": "vue-webpack-template",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A full-featured Vue template using Webpack 4 with hot reload, linting, testing and etc",
   "engines": {
     "node": "9.11.1",
