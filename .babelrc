@@ -2,8 +2,7 @@
   "presets": [
     ["@babel/preset-env", {
       "modules": "commonjs"
-    }],
-    "stage-2"
+    }]
   ],
   "env": {
     "test": {
