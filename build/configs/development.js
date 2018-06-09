@@ -9,6 +9,12 @@
 
 import WebpackMerge from 'webpack-merge';
 
+// Server
+// -----------------------------------------------------------------------------
+
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
+
 // =============================================================================
 // = WEBPACK PARTS                                                             =
 // =============================================================================
@@ -36,8 +42,8 @@ const plugins = (
 export default (
   WebpackMerge([
     devServer({
-      host: process.env.HOST || 'localhost',
-      port: process.env.PORT || '8080',
+      host: HOST || 'localhost',
+      port: PORT || '8080',
     }),
     plugins,
   ])

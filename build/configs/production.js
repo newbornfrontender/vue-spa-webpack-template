@@ -13,6 +13,11 @@ import WebpackMerge from 'webpack-merge';
 // = WEBPACK PARTS                                                             =
 // =============================================================================
 
+// Optimization
+// -----------------------------------------------------------------------------
+
+// import optimization from './parts/optimization';
+
 // Plugins
 // -----------------------------------------------------------------------------
 
@@ -34,6 +39,10 @@ const plugins = (
 
 export default (
   WebpackMerge([
+    // optimization({
+    //   name: 'vendors',
+    // }),
+
     plugins,
   ])
 );

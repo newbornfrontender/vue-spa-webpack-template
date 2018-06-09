@@ -116,11 +116,13 @@ export default (
     entry({
       entry: './src/index.js', // ?
     }),
+
     // ?
     output({
       filename: 'build.js', // ?
       path: utils.resolve('dist'), // ?
     }),
+
     resolve,
     modules,
     plugins,
