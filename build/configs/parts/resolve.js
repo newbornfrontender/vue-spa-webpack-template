@@ -1,25 +1,28 @@
 'use strict';
 
 // =============================================================================
-// = MODULES                                                                   =
+// = DEPENDENCIES                                                              =
 // =============================================================================
+
+// Modules
+// -----------------------------------------------------------------------------
 
 import utils from '../../modules/utils';
 
 // =============================================================================
-// = RESOLVE                                                                   =
+// = WEBPACK PART CONFIG                                                       =
 // =============================================================================
 
-export default ({ // ?
+export default ({
   resolve: {
     extensions: [
       '.js', '.vue', '.json',
     ],
     alias: {
-      'assets': utils.resolve('assets'),
-      'pages': utils.resolve('src/pages'),
-      'static': utils.resolve('static'),
-      'components': utils.resolve('src/components'),
+      'assets': utils.resolve('assets'), // ?
+      'pages': utils.resolve('src/pages'), // ?
+      'static': utils.resolve('static'), // ?
+      'components': utils.resolve('src/components'), // ?
     },
   },
 });

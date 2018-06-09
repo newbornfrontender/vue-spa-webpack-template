@@ -1,7 +1,7 @@
 'use strict';
 
 // =============================================================================
-// = DEVSERVER                                                                 =
+// = WEBPACK PART CONFIG                                                       =
 // =============================================================================
 
 export default ({
@@ -20,7 +20,7 @@ export default ({
       warnings: false,
       errors: true,
     },
-    publicPath: '/',
+    publicPath: '/', // ?
     quiet: true,
     watchOptions: {
       poll: true,
