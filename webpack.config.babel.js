@@ -39,7 +39,8 @@ export default () => {
 
   return (
     WebpackMerge(
-      commonBuild, environmentBuild(),
+      commonBuild,
+      environmentBuild(),
     )
   );
 };
