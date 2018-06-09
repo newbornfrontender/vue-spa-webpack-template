@@ -1,47 +1,32 @@
 'use strict';
 
 // =============================================================================
-// = PLUGINS                                                                   =
+// = DEPENDENCIES                                                              =
 // =============================================================================
+
+// Plugins
+// -----------------------------------------------------------------------------
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-// =============================================================================
-// = ENVIRONMENTS                                                              =
-// =============================================================================
+// Environments
+// -----------------------------------------------------------------------------
 
-// const env = process.env.NODE_ENV;
-
-// const development = env === 'development';
-// const production = env === 'production';
+const env = process.env.NODE_ENV;
 
 // =============================================================================
-// = CSS LOADER                                                                =
+// = WEBPACK PART CONFIG                                                       =
 // =============================================================================
-
-// const loaders = ( mode ) => {
-//   if (mode = 'development') {
-//     [
-//       'vue-style-loader',
-//       'css-loader',
-//     ];
-//   } else if (mode = 'production') {
-//     [
-//       MiniCssExtractPlugin.loader,
-//       'css-loader',
-//     ];
-//   };
-// };
 
 const loaders = () => {
-  if (process.env.NODE_ENV === 'development') {
+  if (env === 'development') {
     return [
       'vue-style-loader',
       'css-loader',
     ];
   };
 
-  if (process.env.NODE_ENV === 'production') {
+  if (env === 'production') {
     return [
       MiniCssExtractPlugin.loader,
       'css-loader',
@@ -58,7 +43,7 @@ export default ({
         test,
         // include,
         // exclude,
-        use: loaders(), // ?
+        use: loaders(),
       },
     ],
   },

@@ -1,42 +1,22 @@
 'use strict';
 
 // =============================================================================
-// = PLUGINS                                                                   =
+// = DEPENDENCIES                                                              =
 // =============================================================================
+
+// Plugins
+// -----------------------------------------------------------------------------
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-// =============================================================================
-// = ENVIRONMENTS                                                              =
-// =============================================================================
+// Environments
+// -----------------------------------------------------------------------------
 
 const env = process.env.NODE_ENV;
 
 // =============================================================================
-// = STYLUS LOADER                                                             =
+// = WEBPACK PART CONFIG                                                       =
 // =============================================================================
-
-// const loaders = ( mode ) => {
-//   if (mode = 'development') {
-//     return [
-//       'vue-style-loader',
-//       'css-loader',
-//       'stylus-loader',
-//     ];
-//   } else if (mode = 'production') {
-//     return [
-//       MiniCssExtractPlugin.loader,
-//       {
-//         loader: 'css-loader',
-//         options: {
-//           importLoaders: 1,
-//         },
-//       },
-//       'postcss-loader',
-//       'stylus-loader',
-//     ];
-//   };
-// };
 
 const loaders = () => {
   if (env === 'development') {
@@ -71,7 +51,7 @@ export default ({
         test,
         // include,
         // exclude,
-        use: loaders(), // ?
+        use: loaders(),
       },
     ],
   },
