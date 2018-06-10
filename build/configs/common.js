@@ -119,7 +119,7 @@ export default (
 
     // ?
     output({
-      filename: 'build.js', // ?
+      filename: 'main.js', // ?
       path: utils.resolve('dist'), // ?
     }),
 
