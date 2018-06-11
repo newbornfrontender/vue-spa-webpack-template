@@ -1,7 +1,8 @@
 'use strict';
 
-const development = env === 'development';
-const production = env === 'production';
+// =============================================================================
+// = PROCESSOR CONFIG                                                          =
+// =============================================================================
 
 module.exports = ({
   env, file, options,
@@ -20,11 +21,11 @@ module.exports = ({
       root: file.dirname,
     },
 
-    'postcss-strip-inline-comments': development ? true : false,
+    'postcss-strip-inline-comments': env === 'development' ? true : false,
 
-    'postcss-prettify': development ? true : false,
+    'postcss-prettify': env === 'development' ? true : false,
 
-    'autoprefixer': development ? false : {
+    'autoprefixer': env === 'development' ? false : {
       cascade: false,
       grid: true,
     },
