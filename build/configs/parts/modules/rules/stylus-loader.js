@@ -18,30 +18,6 @@ const env = process.env.NODE_ENV;
 // = WEBPACK PART CONFIG                                                       =
 // =============================================================================
 
-const loaders = () => {
-  if (env === 'development') {
-    return [
-      'vue-style-loader',
-      'css-loader',
-      'stylus-loader',
-    ];
-  };
-
-  if (env === 'production') {
-    return [
-      MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: {
-          importLoaders: 1,
-        },
-      },
-      'postcss-loader',
-      'stylus-loader',
-    ];
-  };
-};
-
 export default ({
   test,
 } = {}) => ({
@@ -51,7 +27,25 @@ export default ({
         test,
         // include,
         // exclude,
-        use: loaders(),
+        use: [
+          () => {
+            if (env === 'development') {
+              return 'vue-style-loader';
+            };
+
+            if (env === 'production') {
+              return MiniCssExtractPlugin.loader;
+            };
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2, // ?
+            },
+          },
+          'postcss-loader',
+          'stylus-loader',
+        ],
       },
     ],
   },
