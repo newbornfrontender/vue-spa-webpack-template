@@ -28,11 +28,6 @@ import mode from './parts/mode';
 
 import entry from './parts/entry';
 
-// Output
-// -----------------------------------------------------------------------------
-
-import output from './parts/output';
-
 // Resolve
 // -----------------------------------------------------------------------------
 
@@ -69,6 +64,19 @@ const rules = (
 
     urlLoader.img({
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      options: {
+        limit: 10000,
+        // name: utils.assetsPath('img/[name].[hash:5].[ext]'), // ?
+        name () {
+          if (env === 'development') {
+            return utils.assetsPath('img/[name].[ext]');
+          };
+
+          if (env === 'production') {
+            return utils.assetsPath('img/[name].[hash:5].[ext]');
+          };
+        },
+      },
     }),
     urlLoader.media({
       test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -116,13 +124,6 @@ export default (
     entry({
       entry: './src/index.js', // ?
     }),
-
-    // ?
-    output({
-      filename: 'main.js', // ?
-      path: utils.resolve('dist'), // ?
-    }),
-
     resolve,
     modules,
     plugins,
