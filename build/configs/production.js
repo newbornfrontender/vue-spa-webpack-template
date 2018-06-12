@@ -4,6 +4,11 @@
 // = DEPENDENCIES                                                              =
 // =============================================================================
 
+// Modules
+// -----------------------------------------------------------------------------
+
+import utils from '../modules/utils';
+
 // Plugins
 // -----------------------------------------------------------------------------
 
@@ -13,22 +18,27 @@ import WebpackMerge from 'webpack-merge';
 // = WEBPACK PARTS                                                             =
 // =============================================================================
 
+// Output
+// -----------------------------------------------------------------------------
+
+import output from './parts/output';
+
 // Optimization
 // -----------------------------------------------------------------------------
 
-// import optimization from './parts/optimization';
+import optimization from './parts/optimization';
 
 // Plugins
 // -----------------------------------------------------------------------------
 
-import dynamicCdnWebpackPlugin from './parts/plugins/dynamic-cdn-webpack-plugin';
+// import dynamicCdnWebpackPlugin from './parts/plugins/dynamic-cdn-webpack-plugin';
 import miniCssExtractPlugin from './parts/plugins/mini-css-extract-plugin';
 
 const plugins = (
   WebpackMerge([
-    dynamicCdnWebpackPlugin,
+    // dynamicCdnWebpackPlugin,
     miniCssExtractPlugin({
-      filename: 'main.css', // ?
+      filename: '[name].[contenthash:5].css', // ?
     }),
   ])
 );
@@ -39,10 +49,16 @@ const plugins = (
 
 export default (
   WebpackMerge([
+    output({
+      filename: '[name].[contenthash:5].js', // ?
+      chunkFilename: '[name].[contenthash:5].js', // ?
+      path: utils.resolve('dist'), // ?
+    }),
     // optimization({
     //   name: 'vendors',
+    //   filename: '[name]~main.[contenthash:5].js', // ?
     // }),
-
+    optimization,
     plugins,
   ])
 );
