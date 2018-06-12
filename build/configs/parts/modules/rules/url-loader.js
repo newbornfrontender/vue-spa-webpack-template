@@ -17,7 +17,7 @@ import utils from '../../../../modules/utils';
 // -----------------------------------------------------------------------------
 
 export const img = ({
-  test,
+  test, options,
 } = {}) => ({
   module: {
     rules: [
@@ -25,13 +25,17 @@ export const img = ({
         test,
         // include,
         // exclude,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: utils.assetsPath('img/[name].[hash:7].[ext]'), // ?
+        // use: {
+        //   loader: 'url-loader',
+        //   options,
+        // },
+        use: [
+          'file-loader',
+          {
+            loader: 'url-loader',
+            options,
           },
-        },
+        ],
       },
     ],
   },
