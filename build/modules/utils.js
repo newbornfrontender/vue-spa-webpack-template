@@ -1,24 +1,63 @@
 'use strict';
 
-// =============================================================================
-// = DEPENDENCIES                                                              =
-// =============================================================================
+// +-------------+-------------------------------------------------------------+
+// | Title       | Utils                                                       |
+// +-------------+-------------------------------------------------------------+
+// | Description | Utils for webpack and other build config files              |
+// +-------------+-------------------------------------------------------------+
 
-// Modules
+// Dependencies modules
 // -----------------------------------------------------------------------------
 
 import path from 'path';
 
-// =============================================================================
-// = WEBPACK MODULE CONFIG                                                     =
-// =============================================================================
+// Environments
+// -----------------------------------------------------------------------------
+
+const env = process.env.NODE_ENV;
+
+const envMode = (mode, envValue) => {
+  if (env === mode) return envValue;
+};
+
+// Export utils configs
+// -----------------------------------------------------------------------------
 
 export default {
-  resolve: function (dir) {
+
+  // Modes utils
+  //----------------------------------------------------------------------------
+
+  devMode: (devValue, otherValue) => env === 'development'
+    ? devValue
+    : otherValue,
+
+  prodMode: (prodValue, otherValue) => env === 'production'
+    ? prodValue
+    : otherValue,
+
+  only: {
+    devMode: (devValue) => {
+      return envMode('development', devValue);
+    },
+
+    prodMode: (prodValue) => {
+      return envMode('production', prodValue);
+    },
+  },
+
+  // Paths utils
+  //----------------------------------------------------------------------------
+
+  join: (dir) => {
     return path.join(__dirname, '../..', dir); // ?
   },
 
-  assetsPath: function (_path) {
+  resolve: (dir) => {
+    return path.resolve(__dirname, '../..', dir); // ?
+  },
+
+  assetsPath: (_path) => {
     const assetsSubDirectory = 'static'; // ?
 
     return path.posix.join(assetsSubDirectory, _path);
