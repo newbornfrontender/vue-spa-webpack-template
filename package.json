@@ -1,7 +1,7 @@
 {
-  "name": "vue-webpack-template",
-  "version": "0.0.4",
-  "description": "A full-featured Vue template using Webpack 4 with hot reload, linting, testing and etc",
+  "name": "vue-spa-webpack-template",
+  "version": "0.2.0",
+  "description": "A full-featured Vue template for SPA using Webpack 4 with hot reload, linting, testing and etc",
   "engines": {
     "node": "9.11.1",
     "npm": "6.0.1",
@@ -64,7 +64,6 @@
     "module-to-cdn": "^3.1.2",
     "postcss-import": "^11.1.0",
     "postcss-less": "^2.0.0",
-    "postcss-load-config": "^1.2.0",
     "postcss-loader": "^2.1.5",
     "postcss-nested": "^3.0.0",
     "postcss-prettify": "^0.3.4",
