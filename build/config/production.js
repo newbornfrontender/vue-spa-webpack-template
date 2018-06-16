@@ -38,7 +38,8 @@ const plugins = (
   WebpackMerge([
     // dynamicCdnWebpackPlugin,
     miniCssExtractPlugin({
-      filename: '[name].[contenthash:5].css', // ?
+      // filename: '[name].[contenthash:5].css', // ?
+      filename: '[name]' + utils.contentHash + '.css', // ? // '[name].[contenthash:?].css'
     }),
   ])
 );
