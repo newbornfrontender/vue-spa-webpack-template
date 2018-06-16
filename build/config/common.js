@@ -48,40 +48,42 @@ import stylusLoader from './parts/loaders/stylus-loader';
 import babelLoader from './parts/loaders/babel-loader';
 import * as urlLoader from './parts/loaders/url-loader';
 
-const rules = (
-  WebpackMerge([
-    eslintLoader({
-      test: /\.(js|vue)$/,
-    }),
-    vueLoader({
-      test: /\.vue$/,
-    }),
-    cssLoader({
-      test: /\.css$/,
-    }),
-    stylusLoader({
-      test: /\.styl(us)?$/,
-    }),
-    babelLoader({
-      test: /\.js$/,
-    }),
-    urlLoader.img({
-      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-      options: {
-        limit: 10000,
-        name: env === 'production'
-          ? utils.assetsPath('img/[name].[hash:5].[ext]')
-          : utils.assetsPath('img/[name].[ext]'),
-      },
-    }),
-    urlLoader.media({
-      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-    }),
-    urlLoader.fonts({
-      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-    }),
-  ])
-);
+const rules = new WebpackMerge([
+  eslintLoader({
+    test: /\.(js|vue)$/,
+  }),
+  vueLoader({
+    test: /\.vue$/,
+  }),
+  cssLoader({
+    test: /\.css$/,
+  }),
+  stylusLoader({
+    test: /\.styl(us)?$/,
+  }),
+  babelLoader({
+    test: /\.js$/,
+  }),
+  urlLoader.img({
+    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+    options: {
+      limit: 10000,
+      // name: env === 'production'
+      //   ? utils.assetsPath('img/[name].[hash:5].[ext]')
+      //   : utils.assetsPath('img/[name].[ext]'),
+      // name: utils.assetsPath(
+      //   utils.devMode('img/[name].[ext]', 'img/[name].[hash:5].[ext]'),
+      // ),
+      name: 'img/[name]' + utils.hash + '.[ext]', // ? // 'img/[name].[hash:?].[ext]'
+    },
+  }),
+  urlLoader.media({
+    test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+  }),
+  urlLoader.fonts({
+    test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+  }),
+]);
 
 // Modules
 // -----------------------------------------------------------------------------
@@ -107,6 +109,8 @@ const plugins = new WebpackMerge([
 ]);
 
 // -----
+
+// Function export?
 
 // const copy = false;
 
@@ -178,7 +182,7 @@ const plugins = new WebpackMerge([
 // = WEBPACK CONFIG                                                            =
 // =============================================================================
 
-export default new WebpackMerge([
+export default new WebpackMerge([ // function?
   mode,
   entry({
     entry: './src/index.js', // ?
