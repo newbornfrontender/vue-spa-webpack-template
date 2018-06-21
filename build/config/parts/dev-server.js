@@ -20,7 +20,7 @@ export default ({
     clientLogLevel: 'warning',
     hot: true,
     // https: true,
-    contentBase: utils.resolve('dist'), // ?
+    contentBase: utils.join('dist'), // ?
     compress: true,
     // stats: "errors-only",
     host,
