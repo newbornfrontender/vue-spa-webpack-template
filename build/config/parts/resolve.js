@@ -15,14 +15,12 @@ import utils from '../../modules/utils';
 
 export default ({
   resolve: {
-    extensions: [
-      '.js', '.vue', '.json',
-    ],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
-      'assets': utils.resolve('assets'), // ?
-      'pages': utils.resolve('src/pages'), // ?
-      'static': utils.resolve('static'), // ?
-      'components': utils.resolve('src/components'), // ?
+      'assets': utils.join('assets'), // ?
+      'pages': utils.join('src/pages'), // ?
+      'static': utils.join('static'), // ?
+      'components': utils.join('src/components'), // ?
     },
   },
 });
