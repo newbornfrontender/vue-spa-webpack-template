@@ -20,6 +20,11 @@ const envMode = (mode, envValue) => {
   if (env === mode) return envValue;
 };
 
+// Hashes
+// -----------------------------------------------------------------------------
+
+const hashesLength = '5';
+
 // Export utils configs
 // -----------------------------------------------------------------------------
 
@@ -49,9 +54,9 @@ export default {
   // Hashes utils
   //----------------------------------------------------------------------------
 
-  hash: env === 'production' ? '.[hash:5]' : '',
+  hash: env === 'production' ? '.[hash:' + hashesLength + ']' : '', // [md5:hash:hex:5]
 
-  contentHash: env === 'production' ? '.[contenthash:5]' : '',
+  contentHash: env === 'production' ? '.[contenthash:' + hashesLength + ']' : '',
 
   // Paths utils
   //----------------------------------------------------------------------------
