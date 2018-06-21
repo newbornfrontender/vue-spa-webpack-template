@@ -1,52 +1,13 @@
 'use strict';
 
 // =============================================================================
-// = DEPENDENCIES                                                              =
-// =============================================================================
-
-// Modules
-// -----------------------------------------------------------------------------
-
-import utils from '../../../modules/utils';
-
-// =============================================================================
 // = WEBPACK PART CONFIG                                                       =
 // =============================================================================
 
 // Images
 // -----------------------------------------------------------------------------
 
-export const img = ({
-  test, options,
-} = {}) => ({
-  module: {
-    rules: [
-      {
-        test,
-        // include,
-        // exclude,
-        // use: {
-        //   loader: 'url-loader',
-        //   options,
-        // },
-        use: [
-          'file-loader',
-          {
-            loader: 'url-loader',
-            options,
-          },
-        ],
-      },
-    ],
-  },
-});
-
-// Media
-// -----------------------------------------------------------------------------
-
-export const media = ({
-  test,
-} = {}) => ({
+export const img = ({ test, name } = {}) => ({
   module: {
     rules: [
       {
@@ -57,7 +18,29 @@ export const media = ({
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: utils.assetsPath('media/[name].[hash:7].[ext]'), // ?
+            name,
+          },
+        },
+      },
+    ],
+  },
+});
+
+// Media
+// -----------------------------------------------------------------------------
+
+export const media = ({ test, name } = {}) => ({
+  module: {
+    rules: [
+      {
+        test,
+        // include,
+        // exclude,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name,
           },
         },
       },
@@ -68,9 +51,7 @@ export const media = ({
 // Fonts
 // -----------------------------------------------------------------------------
 
-export const fonts = ({
-  test,
-} = {}) => ({
+export const fonts = ({ test, name } = {}) => ({
   module: {
     rules: [
       {
@@ -81,7 +62,7 @@ export const fonts = ({
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: utils.assetsPath('fonts/[name].[hash:7].[ext]'), // ?
+            name,
           },
         },
       },
