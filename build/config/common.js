@@ -19,6 +19,11 @@ import WebpackMerge from 'webpack-merge';
 
 const env = process.env.NODE_ENV;
 
+// Hashes
+// -----------------------------------------------------------------------------
+
+const HASH = utils.hash;
+
 // =============================================================================
 // = WEBPACK PARTS                                                             =
 // =============================================================================
@@ -46,7 +51,7 @@ import vueLoader from './parts/loaders/vue-loader';
 import cssLoader from './parts/loaders/css-loader';
 import stylusLoader from './parts/loaders/stylus-loader';
 import babelLoader from './parts/loaders/babel-loader';
-import * as urlLoader from './parts/loaders/url-loader';
+import * as fileLoader from './parts/loaders/file-loader';
 
 const rules = new WebpackMerge([
   eslintLoader({
@@ -64,24 +69,17 @@ const rules = new WebpackMerge([
   babelLoader({
     test: /\.js$/,
   }),
-  urlLoader.img({
+  fileLoader.img({
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-    options: {
-      limit: 10000,
-      // name: env === 'production'
-      //   ? utils.assetsPath('img/[name].[hash:5].[ext]')
-      //   : utils.assetsPath('img/[name].[ext]'),
-      // name: utils.assetsPath(
-      //   utils.devMode('img/[name].[ext]', 'img/[name].[hash:5].[ext]'),
-      // ),
-      name: 'img/[name]' + utils.hash + '.[ext]', // ? // 'img/[name].[hash:?].[ext]'
-    },
+    name: utils.assetsPath('img/[name]' + HASH + '.[ext]?[hash]'), // ?
   }),
-  urlLoader.media({
+  fileLoader.media({
     test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+    name: utils.assetsPath('media/[name]' + HASH + '.[ext]'), // ?
   }),
-  urlLoader.fonts({
+  fileLoader.fonts({
     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+    name: utils.assetsPath('fonts/[name]' + HASH + '.[ext]'), // ?
   }),
 ]);
 
@@ -105,84 +103,14 @@ const plugins = new WebpackMerge([
     filename: 'index.html', // ?
     template: 'index.html', // ?
   }),
-  copyWebpackPlugin,
+  // copyWebpackPlugin,
 ]);
-
-// -----
-
-// Function export?
-
-// const copy = false;
-
-// function copyMode(plugin) {
-//   if (copy === true) return plugin;
-// };
-
-// const innerPlugins = [
-//   vueLoaderPlugin,
-//   htmlWebpackPlugin({
-//     filename: 'index.html', // ?
-//     template: 'index.html', // ?
-//   }),
-// ];
-
-// innerPlugins.push(
-//   // copy === true ? copyWebpackPlugin : copyWebpackPlugin,
-//   copyMode(copyWebpackPlugin)
-// );
-
-// const plugins = new WebpackMerge(
-//   innerPlugins,
-// );
-
-// -----
-
-// const plugins = new WebpackMerge([
-//   vueLoaderPlugin,
-//   htmlWebpackPlugin({
-//     filename: 'index.html', // ?
-//     template: 'index.html', // ?
-//   }),
-// ].push(
-//   copy === true ? copyWebpackPlugin : copyWebpackPlugin,
-// ));
-
-// -----
-
-// const innerPlugins = [
-//   vueLoaderPlugin,
-//   htmlWebpackPlugin({
-//     filename: 'index.html', // ?
-//     template: 'index.html', // ?
-//   }),
-// ];
-
-// if (env === 'production') innerPlugins.push(
-//   copyWebpackPlugin,
-// );
-
-// const plugins = new WebpackMerge(
-//   innerPlugins,
-// );
-
-// -----
-
-// const plugins = ([
-//   vueLoaderPlugin, htmlWebpackPlugin, copyWebpackPlugin,
-// ] = []) => new WebpackMerge([
-//   vueLoaderPlugin,
-//   htmlWebpackPlugin,
-//   copyWebpackPlugin,
-// ]);
-
-// const plugins = () => new WebpackMerge([]);
-// const plugins = () => new WebpackMerge([]);
 
 // =============================================================================
 // = WEBPACK CONFIG                                                            =
 // =============================================================================
 
-export default new WebpackMerge([ // function?
+export default new WebpackMerge([
   mode,
   entry({
     entry: './src/index.js', // ?
@@ -190,12 +118,4 @@ export default new WebpackMerge([ // function?
   resolve,
   modules,
   plugins,
-  // plugins.push([
-  //   vueLoaderPlugin,
-  //   htmlWebpackPlugin({
-  //     filename: 'index.html', // ?
-  //     template: 'index.html', // ?
-  //   }),
-  //   copyWebpackPlugin,
-  // ]),
 ]);

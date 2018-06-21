@@ -29,22 +29,18 @@ import devServer from './parts/dev-server';
 
 import hotModuleReplacementPlugin from './parts/plugins/hot-module-replacement-plugin';
 
-const plugins = (
-  WebpackMerge([
-    hotModuleReplacementPlugin,
-  ])
-);
+const plugins = new WebpackMerge([
+  hotModuleReplacementPlugin,
+]);
 
 // =============================================================================
 // = WEBPACK CONFIG                                                            =
 // =============================================================================
 
-export default (
-  WebpackMerge([
-    devServer({
-      host: HOST || 'localhost',
-      port: PORT || '8080',
-    }),
-    plugins,
-  ])
-);
+export default new WebpackMerge([
+  devServer({
+    host: HOST || 'localhost',
+    port: PORT || '8080',
+  }),
+  plugins,
+]);

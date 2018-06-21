@@ -14,6 +14,11 @@ import utils from '../modules/utils';
 
 import WebpackMerge from 'webpack-merge';
 
+// Hashes
+// -----------------------------------------------------------------------------
+
+const CONTENTHASH = utils.contentHash;
+
 // =============================================================================
 // = WEBPACK PARTS                                                             =
 // =============================================================================
@@ -34,32 +39,32 @@ import optimization from './parts/optimization';
 // import dynamicCdnWebpackPlugin from './parts/plugins/dynamic-cdn-webpack-plugin';
 import miniCssExtractPlugin from './parts/plugins/mini-css-extract-plugin';
 
-const plugins = (
-  WebpackMerge([
-    // dynamicCdnWebpackPlugin,
-    miniCssExtractPlugin({
-      // filename: '[name].[contenthash:5].css', // ?
-      filename: '[name]' + utils.contentHash + '.css', // ? // '[name].[contenthash:?].css'
-    }),
-  ])
-);
+const plugins = new WebpackMerge([
+  // dynamicCdnWebpackPlugin,
+  miniCssExtractPlugin({
+    filename: '[name]' + CONTENTHASH + '.css', // ? // '[name].[contenthash:?].css'
+  }),
+]);
 
 // =============================================================================
 // = WEBPACK CONFIG                                                            =
 // =============================================================================
 
-export default (
-  WebpackMerge([
-    output({
-      filename: '[name].[contenthash:5].js', // ?
-      chunkFilename: '[name].[contenthash:5].js', // ?
-      path: utils.resolve('dist'), // ?
-    }),
-    // optimization({
-    //   name: 'vendors',
-    //   filename: '[name]~main.[contenthash:5].js', // ?
-    // }),
-    optimization,
-    plugins,
-  ])
-);
+// const RESOLVE = (pathName) => {
+//   utils.resolve(pathName);
+// };
+
+export default new WebpackMerge([
+  output({
+    filename: '[name]' + CONTENTHASH + '.js', // ?
+    chunkFilename: '[name]' + CONTENTHASH + '.js', // ?
+    path: utils.resolve('dist'), // ?
+    // path: RESOLVE('dist'), // ?
+  }),
+  // optimization({
+  //   name: 'vendors',
+  //   filename: '[name]~main.[contenthash:5].js', // ?
+  // }),
+  optimization,
+  plugins,
+]);

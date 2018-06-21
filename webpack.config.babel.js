@@ -1,46 +1,35 @@
 'use strict';
 
-// =============================================================================
-// = DEPENDENCIES                                                              =
-// =============================================================================
+// +-------------+-------------------------------------------------------------+
+// | Title       | Main webpack config file                                    |
+// +-------------+-------------------------------------------------------------+
+// | Description |                                                             |
+// +-------------+-------------------------------------------------------------+
+// | Notes       | 1.                                                          |
+// +-------------+-------------------------------------------------------------+
+// | Bugs        | 1.                                                          |
+// +-------------+-------------------------------------------------------------+
 
-// Plugins
+// Dependencies modules
+// -----------------------------------------------------------------------------
+
+import utils from './build/modules/utils';
+
+// Dependencies plugins
 // -----------------------------------------------------------------------------
 
 import WebpackMerge from 'webpack-merge';
 
-// Environments
+// Webpack builds
 // -----------------------------------------------------------------------------
 
-const env = process.env.NODE_ENV;
+import commonBuild from './build/config/common';
+import devBuild from './build/config/development';
+import prodBuild from './build/config/production';
 
-// =============================================================================
-// = WEBPACK BUILDS                                                            =
-// =============================================================================
+const envBuild = utils.devMode(devBuild, prodBuild);
 
-import commonBuild from './build/configs/common';
-import developmentBuild from './build/configs/development';
-import productionBuild from './build/configs/production';
+// Export webpack config
+// -----------------------------------------------------------------------------
 
-// =============================================================================
-// = WEBPACK CONFIG                                                            =
-// =============================================================================
-
-export default () => {
-  let environmentBuild = () => {
-    if (env === 'development') {
-      return developmentBuild;
-    };
-
-    if (env === 'production') {
-      return productionBuild;
-    };
-  };
-
-  return (
-    WebpackMerge(
-      commonBuild,
-      environmentBuild(),
-    )
-  );
-};
+export default () => new WebpackMerge(commonBuild, envBuild); // function?
