@@ -37,7 +37,7 @@ export default ({ test } = {}) => ({
             loader: 'postcss-loader',
             options: {
               config: {
-                // path: 'build/processors/postcss.config.js', // ?
+                path: 'config/processors/stylus/postcss.config.js', // ?
                 ctx: {
                   autoprefixer: {
                     cascade: false,
