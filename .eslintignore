@@ -11,6 +11,10 @@
 
 /build/
 
+# Configs
+
+/config/
+
 # Builts
 
 /dist/
