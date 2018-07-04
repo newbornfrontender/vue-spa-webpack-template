@@ -1,26 +1,17 @@
 'use strict';
 
-// =============================================================================
-// = DEPENDENCIES                                                              =
-// =============================================================================
-
-// Modules
-// -----------------------------------------------------------------------------
-
 import utils from '../../modules/utils';
 
-// =============================================================================
-// = WEBPACK PART CONFIG                                                       =
-// =============================================================================
+const JOIN = utils.join;
 
 export default ({
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: [ '.js', '.vue', '.json' ],
     alias: {
-      'assets': utils.join('assets'), // ?
-      'pages': utils.join('src/pages'), // ?
-      'static': utils.join('static'), // ?
-      'components': utils.join('src/components'), // ?
+      'assets': JOIN('assets'), // './'
+      'pages': JOIN('src/pages'), // './'
+      'static': JOIN('static'), // './'
+      'components': JOIN('src/components'), // './'
     },
   },
 });

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import App from './App'
 
-import 'assets/styles/stylus/app.styl'
+import 'assets/styles/app.styl'
 
 /* eslint-disable-next-line no-new */
 new Vue({

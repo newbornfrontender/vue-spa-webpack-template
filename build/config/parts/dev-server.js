@@ -1,26 +1,15 @@
 'use strict';
 
-// =============================================================================
-// = DEPENDENCIES                                                              =
-// =============================================================================
-
-// Modules
-// -----------------------------------------------------------------------------
-
 import utils from '../../modules/utils';
 
-// =============================================================================
-// = WEBPACK PART CONFIG                                                       =
-// =============================================================================
+const JOIN = utils.join;
 
-export default ({
-  host, port,
-} = {}) => ({
+export default ({ host, port } = {}) => ({
   devServer: {
     clientLogLevel: 'warning',
     hot: true,
     // https: true,
-    contentBase: utils.join('dist'), // ?
+    contentBase: JOIN('dist'), // './'
     compress: true,
     // stats: "errors-only",
     host,
@@ -30,7 +19,7 @@ export default ({
       warnings: false,
       errors: true,
     },
-    publicPath: '/', // ?
+    publicPath: '/', // './'
     quiet: true,
     watchOptions: {
       poll: true,

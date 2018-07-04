@@ -1,29 +1,17 @@
 'use strict';
 
-// =============================================================================
-// = DEPENDENCIES                                                              =
-// =============================================================================
-
-// Modules
-// -----------------------------------------------------------------------------
-
 import utils from '../../../modules/utils';
-
-// Plugins
-// -----------------------------------------------------------------------------
 
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-// =============================================================================
-// = WEBPACK PART CONFIG                                                       =
-// =============================================================================
-
 export default ({
   plugins: [
-    new CopyWebpackPlugin([{
-      from: utils.resolve('static/img/'), // ?
-      to: utils.resolve('dist/static/img/'), // ?
-      toType: 'dir',
-    }]),
+    new CopyWebpackPlugin([
+      {
+        from: utils.resolve('static/img/'), // './'
+        to: utils.resolve('dist/static/img/'), // './'
+        toType: 'dir',
+      },
+    ]),
   ],
 });

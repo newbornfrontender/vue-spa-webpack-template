@@ -1,12 +1,6 @@
 'use strict';
 
-// =============================================================================
-// = WEBPACK PART CONFIG                                                       =
-// =============================================================================
-
-export default ({
-  filename, path,
-} = {}) => ({
+export default ({ filename, path } = {}) => ({
   output: {
     filename,
     path,
