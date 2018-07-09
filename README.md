@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://yarnpkg.com/">
-    <img height="35" alt="Yarn logo" src="https://raw.githubusercontent.com/newbornfrontender/vue-spa-webpack-template/master/help/logos/yarn-logo.png">
+    <img height="35" alt="Yarn logo" src="/help/logos/yarn-logo.png">
   </a>
   <a href="https://vuejs.org/">
     <img height="35" alt="Vue logo" src="https://raw.githubusercontent.com/newbornfrontender/vue-spa-webpack-template/master/help/logos/vue-logo.png">
