@@ -38,7 +38,9 @@
     "@babel/register": "^7.0.0-beta.49",
     "@vue/test-utils": "^1.0.0-beta.16",
     "autoprefixer": "^8.5.1",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.2.0",
     "babel-loader": "^8.0.0-beta.3",
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.6",
@@ -87,9 +89,14 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": [ "src/**/*.{js,vue}" ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,vue}"
+    ],
     "coverageDirectory": ".jest_coverage",
-    "moduleFileExtensions": [ "js", "vue" ],
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
@@ -97,6 +104,8 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
-    "snapshotSerializers": [ "<rootDir>/node_modules/jest-serializer-vue" ]
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ]
   }
 }
