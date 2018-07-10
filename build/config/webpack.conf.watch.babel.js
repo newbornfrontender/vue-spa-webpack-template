@@ -34,7 +34,7 @@ import utils from '../modules/utils';
 // +-------+-------------------------------------------------------------------+
 
 const RESOLVE = utils.resolve;
-const CONTENTHASH = utils.contentHash;
+const CONTENTHASH = utils.contentHash();
 
 // +-------+-------------------------------------------------------------------+
 // | Title | Environments                                                      |

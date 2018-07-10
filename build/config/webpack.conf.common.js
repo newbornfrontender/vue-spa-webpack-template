@@ -167,7 +167,7 @@ const config = new WebpackMerge([
 
   vueLoaderPlugin,
   htmlWebpackPlugin({
-    template: './index.html', // './'
+    template: './templates/index.html', // './'
     filename: './index.html', // './'
     title: 'VueJs + Webpack 4 template',
     meta: {

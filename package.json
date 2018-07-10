@@ -2,11 +2,6 @@
   "name": "vue-spa-webpack-template",
   "version": "0.2.1",
   "description": "A full-featured Vue template for SPA using Webpack 4 with hot reload, linting, testing and etc",
-  "engines": {
-    "node": "9.11.2",
-    "npm": "6.1.0",
-    "yarn": "1.7.0"
-  },
   "scripts": {
     "start": "cross-env NODE_ENV=development HOST=localhost PORT=8080 webpack-dev-server --progress --config build/config/webpack.conf.dev.babel.js",
     "watch": "cross-env NODE_ENV=watch webpack --watch --config build/config/webpack.conf.watch.babel.js",
@@ -92,14 +87,9 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.{js,vue}"
-    ],
+    "collectCoverageFrom": [ "src/**/*.{js,vue}" ],
     "coverageDirectory": ".jest_coverage",
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
+    "moduleFileExtensions": [ "js", "vue" ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
@@ -107,8 +97,6 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
-    "snapshotSerializers": [
-      "<rootDir>/node_modules/jest-serializer-vue"
-    ]
+    "snapshotSerializers": [ "<rootDir>/node_modules/jest-serializer-vue" ]
   }
 }

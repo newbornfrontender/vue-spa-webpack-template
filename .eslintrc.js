@@ -1,7 +1,6 @@
 'use strict';
 
-const development = process.env.NODE_ENV === 'development';
-const production = process.env.NODE_ENV === 'production';
+const env = process.env.NODE_ENV;
 
 module.exports = {
   root: true,
@@ -20,11 +19,9 @@ module.exports = {
     'plugin:vue/recommended',
     'standard',
   ],
-  plugins: [
-    'vue',
-  ],
+  plugins: [ 'vue' ],
   rules: {
     'generator-star-spacing': 'off',
-    'no-debugger': production ? 'error' : 'off',
+    'no-debugger': env === 'production' ? 'error' : 'off',
   },
 };

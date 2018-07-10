@@ -23,7 +23,37 @@ const envMode = (mode, envValue) => {
 // Hashes
 // -----------------------------------------------------------------------------
 
+const hashOptions = {
+  hashType: 'md5',
+  digestType: 'hex',
+  length: '5',
+};
+
+// const hashType = 'md5';
+// const digestType = 'hex';
 const hashesLength = '5';
+
+// const hash = (name, hashType, digestType, length) => {
+//   hashType = hashType || hashOptions.hashType;
+//   digestType = digestType || hashOptions.digestType;
+//   length = length || hashOptions.length;
+
+//   if (env === 'production') {
+//     // return '.[' + hashType + ':' + name + ':' + digestType + ':' + length + ']';
+//     return `.[${hashType}:${name}:${digestType}:${length}]`;
+//   };
+// };
+
+const hash = (name, hashType, digestType, length) => {
+  hashType = hashType || hashOptions.hashType;
+  digestType = digestType || hashOptions.digestType;
+  length = length || hashOptions.length;
+
+  if (env === 'production') {
+    // return '.[' + hashType + ':' + name + ':' + digestType + ':' + length + ']';
+    return `.[${hashType}:${name}:${digestType}:${length}]`;
+  };
+};
 
 // Export utils configs
 // -----------------------------------------------------------------------------
@@ -56,7 +86,21 @@ export default {
 
   hash: env === 'production' ? '.[hash:' + hashesLength + ']' : '', // [md5:hash:hex:5]
 
-  contentHash: env === 'production' ? '.[contenthash:' + hashesLength + ']' : '',
+  // contentHash: env === 'production' ? '.[contenthash:' + hashesLength + ']' : '',
+  // contentHash: (length) => {
+  //   length = length || hashesLength;
+
+  //   if (env === 'production') {
+  //     return '.[contenthash:' + length + ']';
+  //   };
+  // },
+  contentHash: (length) => {
+    length = length || hashOptions.length;
+
+    if (env === 'production') {
+      return `.[contenthash:${length}]`;
+    };
+  },
 
   // Paths utils
   //----------------------------------------------------------------------------
