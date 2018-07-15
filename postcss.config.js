@@ -23,22 +23,20 @@ module.exports = ({ env, file, options }) => ({
     false,
   plugins: {
     'postcss-nested': processor.postcss ? {} : false,
-    'postcss-import': processor.postcss
-      ? { root: file.dirname }
-      : false,
+    'postcss-import': processor.postcss ? { root: file.dirname } : false,
     'postcss-strip-inline-comments': processor.postcss ? {} : false,
-    'postcss-prettify': processor.postcss
-      ? env === 'watch' || 'development' ? {} : false
-      : false,
-    'autoprefixer': env === 'production'
-      ? part.autoprefixer
-        ? parts.autoprefixer({
+    'postcss-prettify': processor.postcss ?
+      env === 'watch' || 'development' ? {} : false :
+      false,
+    'autoprefixer': env === 'production' ?
+      part.autoprefixer ?
+        parts.autoprefixer({
           browsers: [
             'last 25 versions',
           ],
           grid: true,
-        })
-        : options.autoprefixer
-      : false,
+        }) :
+        options.autoprefixer :
+        false,
   },
 });
