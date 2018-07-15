@@ -140,7 +140,10 @@ const config = new WebpackMerge([
   cssLoader({
     test: /\.css$/,
   }),
-  stylusLoader,
+  stylusLoader(),
+  // stylusLoader({
+  //   test: /\.styl(us)?$/,
+  // }),
   babelLoader({
     test: /\.js$/,
   }),

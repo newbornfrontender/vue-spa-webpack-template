@@ -6,17 +6,60 @@ const env = process.env.NODE_ENV;
 
 const components = true;
 
-export default ({
+// export default ({
+//   module: {
+//     rules: [
+//       {
+//         test: /\.styl(us)?$/,
+//         // include,
+//         // exclude,
+//         use: [
+//           env === 'watch' || 'production'
+//             ? MiniCssExtractPlugin.loader
+//             : 'vue-style-loader',
+//           {
+//             loader: 'css-loader',
+//             options: {
+//               importLoaders: 2, // ?
+//             },
+//           },
+//           {
+//             loader: 'postcss-loader',
+//             options: {
+//               config: {
+//                 path: !components ? 'configs/processors/stylus/postcss.config.js' : '', // './', ''
+//                 ctx: {
+//                   autoprefixer: {
+//                     cascade: false,
+//                     grid: true,
+//                   },
+//                 },
+//               },
+//             },
+//           },
+//           'stylus-loader',
+//         ],
+//       },
+//     ],
+//   },
+// });
+
+export default ({ test } = {}) => ({
   module: {
     rules: [
       {
-        test: /\.styl(us)?$/,
+        // test: /\.styl(us)?$/,
+        test: test || /\.styl(us)?$/,
         // include,
         // exclude,
         use: [
-          env === 'watch' || 'production'
-            ? MiniCssExtractPlugin.loader
-            : 'vue-style-loader',
+          // env === 'watch' || 'production'
+          //   ? MiniCssExtractPlugin.loader
+          //   : 'vue-style-loader',
+          () => {
+            if (env === 'watch' || 'production') return MiniCssExtractPlugin.loader;
+            return 'vue-style-loader';
+          },
           {
             loader: 'css-loader',
             options: {

@@ -1,5 +1,6 @@
 /build/
 /configs/
+/options/
 /dist/
 
 posthtml.config.js
